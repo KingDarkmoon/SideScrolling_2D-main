@@ -41,12 +41,14 @@ public class ContorlSystem : MonoBehaviour
     private void Update()
     {
         // 按下空白鍵跳躍
+        float jumpVelocity = Mathf.Sqrt(2f * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            float jumpVelocity = Mathf.Sqrt(2f * jumpHeight * Mathf.Abs(Physics2D.gravity.y));
+            
             rig.velocity = new Vector2(rig.velocity.x, jumpVelocity);
             isJumping = true;
         }
+        ani.SetBool("jump", jumpVelocity != 0);
 
         // 左右移動
         float moveInput = Input.GetAxis("Horizontal");
