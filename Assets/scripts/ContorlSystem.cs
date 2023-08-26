@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using System.Reflection;
 
 public class ContorlSystem : MonoBehaviour
 {
@@ -24,6 +25,9 @@ public class ContorlSystem : MonoBehaviour
     [Header("跑步參數")]
     public string PerRun = "IF_Run";
 
+    [Header("攻擊控制")]
+    public string atk = "attack";
+
 
 
     private bool isJumping = false;
@@ -31,6 +35,7 @@ public class ContorlSystem : MonoBehaviour
     private void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
+        ani = GetComponent<Animator>();
     }
 
     private void Update()
@@ -58,6 +63,11 @@ public class ContorlSystem : MonoBehaviour
 
         ani.SetBool("IF_Run", moveInput != 0);
 
+        //攻擊動作
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            ani.SetTrigger("Attack");
+        }
     }
 
     private void FixedUpdate()
