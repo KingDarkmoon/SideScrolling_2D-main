@@ -48,7 +48,7 @@ public class ContorlSystem : MonoBehaviour
             rig.velocity = new Vector2(rig.velocity.x, jumpVelocity);
             isJumping = true;
         }
-        ani.SetBool("jump", jumpVelocity != 0);
+        ani.SetBool("jump", jumpVelocity  !=0);
 
         // 左右移動
         float moveInput = Input.GetAxis("Horizontal");
